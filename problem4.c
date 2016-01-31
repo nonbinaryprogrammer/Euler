@@ -7,55 +7,62 @@
  * A palindromic number reads the same both ways. The largest palindrome made
  * from the product of two 2-digit numbers is 9009 = 91 × 99. Find the largest
  * palindrome made from the product of two 3-digit numbers.
- * Incorrect
+ * Correct
  *******************************************************************************/
 
-int palindrome(long long prod) {
+int palindrome(int prod) {
   int i, j;
-  long long r;
-  char p[6], m, n;
+  int r;
+  int p[7], m, n;
 
-  for(i=5; i>=0; i--) {
-    r = prod % 10;
-    prod = prod/10;
-    p[i] = r + 30;
+  for(i=0; i<7; i++) {
+    if(prod != 0) {
+      r = prod % 10;
+      prod = prod/10;
+      p[i] = r;
+    } else {
+      p[i] = -1;
+    }
   }
 
-  i=0;
-  while(1) {
-    m = p[i];
-    if(p[i] != 0) {
-      j = i;
-      while(p[j] != 0) {
-        j++;
-      }
-      j--;
-    } else {
+  i = 0;
+  while(i<7) {
+    j = i;
+    if(p[i] == -1) {
       return 1;
     }
+    m = p[i];
+    while(p[j] != -1 && j<=7) {
+      j++;
+    }
+    j--;
     if(m != p[j]) {
       return 0;
-    } else {
-      p[i] = 0;
-      p[j] = 0;
-      i++;
     }
+    p[i] = -1;
+    p[j] = -1;
+    i++;
   }
+
+  return 1;
 }
 
 int main() {
   int i, j;
-  long long prod;
+  int prod, max;
 
   for(i=999; i>0; i--) {
     for(j=999; j>0; j--) {
       prod = i*j;
       if(palindrome(prod) == 1) {
-        printf("largest palindrome: %llu\n", prod);
-        return 0;
+        if(prod > max) {
+          max = prod;
+        }
       }
     }
   }
+
+  printf("largest palindrome: %d\n", max);
 
   return 0;
 }
