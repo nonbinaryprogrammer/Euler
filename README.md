@@ -2,7 +2,7 @@
 
 ![Project Euler Badge](https://projecteuler.net/profile/balesh.png)
 <br>
-### Friend Key:
+## Friend Key:
 <code>915091_lIc6asLzrN6QtrULqUfvOsG4GnwLr5ra</code>
 
 ## About This Project
