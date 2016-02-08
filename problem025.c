@@ -1,4 +1,4 @@
-#include "./mathlib.h"
+#include "../MathLib/mathlib.h"
 #include <stdio.h>
 #include <stdlib.h>
 
